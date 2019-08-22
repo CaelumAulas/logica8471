@@ -1,0 +1,21 @@
+<meta charset="utf-8">
+<h1>Uber vs Carro</h1>
+<h2>Uber</h2>
+<p>Total: R$ 42,68</p>
+
+<h2>Carro</h2>
+<script>
+  var distancia = parseFloat(prompt("Digite distancia?"))
+  var autonomia = parseFloat(prompt("Digite autonomia?"))
+  var precoCombustivel = parseFloat(prompt("Digite preço do combustivel?"))
+
+  var gasolina = (distancia/autonomia)*precoCombustivel
+
+  var estacionamento = prompt("Gasto com estacionamento")
+  var estacionamentoNumero = parseFloat(estacionamento)
+
+  var totalCarro = gasolina + estacionamentoNumero
+  document.write("Gasolina: R$ "+gasolina.toFixed(2).replace(".",",")+"<br>")
+  document.write("Estacionamento: R$ "+estacionamentoNumero.toFixed(2).replace(".",",")+"<br>")
+  document.write("Total: R$ "+totalCarro.toFixed(2).replace(".",","))
+</script>
