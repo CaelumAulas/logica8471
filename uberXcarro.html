@@ -1,21 +1,37 @@
 <meta charset="utf-8">
 <h1>Uber vs Carro</h1>
 <h2>Uber</h2>
-<p>Total: R$ 42,68</p>
+<script src="js/pegaNumero.js"></script>
 
+<script>
+  mensagem = "Qual a distância que será percorrida?"
+  var distancia = pegaNumero()
+  mensagem = "Qual a velocidade média do carro?"
+  var velocidadeMedia = pegaNumero()
+  var tempoEmHoras = distancia/velocidadeMedia
+  var tempoEmMinutos = tempoEmHoras*60
+  var totalUber = 2 + distancia*1.4 + tempoEmMinutos*0.26
+
+  document.write(`
+    Total: R$ ${totalUber.toFixed(2).replace(".",",")}
+  `)
+</script>
 <h2>Carro</h2>
 <script>
-  var distancia = parseFloat(prompt("Digite distancia?"))
-  var autonomia = parseFloat(prompt("Digite autonomia?"))
-  var precoCombustivel = parseFloat(prompt("Digite preço do combustivel?"))
+  mensagem ="Quantos KM seu carro faz por litro?"
+  var autonomia = pegaNumero()
+  mensagem = "Qual o preço do litro do combustível?"
+  var precoCombustivel = pegaNumero()
+  var combustivel = (distancia/autonomia)*precoCombustivel
+  mensagem = "Digite o quanto gastará com estacionamento"
+  var estacionamento = pegaNumero()
+  var totalCarro = combustivel + estacionamento
 
-  var gasolina = (distancia/autonomia)*precoCombustivel
-
-  var estacionamento = prompt("Gasto com estacionamento")
-  var estacionamentoNumero = parseFloat(estacionamento)
-
-  var totalCarro = gasolina + estacionamentoNumero
-  document.write("Gasolina: R$ "+gasolina.toFixed(2).replace(".",",")+"<br>")
-  document.write("Estacionamento: R$ "+estacionamentoNumero.toFixed(2).replace(".",",")+"<br>")
-  document.write("Total: R$ "+totalCarro.toFixed(2).replace(".",","))
+  document.write(`
+    Combustível: R$ ${combustivel.toFixed(2).replace(".",",")}
+    <br>
+    Estacionamento: R$ ${estacionamento.toFixed(2).replace(".",",")}
+    <br>
+    Total: R$ ${totalCarro.toFixed(2).replace(".",",")}
+  `)
 </script>

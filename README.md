@@ -1,4 +1,4 @@
-# logica(ADICIONAR NÚMERO DA TURMA)
+# logica8471
 
 Material de apoio para o curso de Lógica de Programação com JavaScript.
 
