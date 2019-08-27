@@ -1,0 +1,31 @@
+<meta charset="utf-8">
+<h1>Academia Caelum</h1>
+
+<script src="js/pegaNumero.js"></script>
+<script src="js/libIdade.js"></script>
+
+<script>
+  var nome = prompt("Qual o nome?")
+  var peso = pegaNumero("Qual o peso?")
+  var altura = pegaNumero("Qual a altura?")
+  var dataNascimento = prompt("Qual a data de nascimento?")
+
+  var diaMesAno = dataNascimento.split("/")
+  var diaNascimento = diaMesAno[0]
+  var mesNascimento = diaMesAno[1]
+  var anoNascimento = diaMesAno[2]
+
+  var idade = calculaIdade(diaNascimento, mesNascimento, anoNascimento)
+
+  document.write(`
+    Nome: ${nome}
+    <br>
+    Peso: ${peso.toFixed(2).replace(".",",")} kg
+    <br>
+    Altura: ${altura.toFixed(2).replace(".",",")} m
+    <br>
+    Data de Nascimento: ${dataNascimento}
+    <br>
+    Idade: ${idade} anos
+  `)
+</script>

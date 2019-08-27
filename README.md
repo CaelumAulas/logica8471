@@ -5,7 +5,17 @@ Material de apoio para o curso de Lógica de Programação com JavaScript.
 
 ## Links Interessantes:
 
+[Caelum](https://www.caelum.com.br/)
+
+[Alura](https://www.alura.com.br/)
+
 [Apostilas e Certificados](http://aluno.caelum.com.br/login)
+
+[Hipsters.Jobs](https://hipsters.jobs/)
+
+[Hipsters.Tech](https://hipsters.tech/)
+
+[Carreira Sem Fronteiras](https://www.carreirasemfronteiras.com.br/)
 
 [HTML reference - MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 

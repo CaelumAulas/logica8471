@@ -1,37 +1,39 @@
 <meta charset="utf-8">
 <h1>Uber vs Carro</h1>
 <h2>Uber</h2>
+
 <script src="js/pegaNumero.js"></script>
+<script src="js/libRelogio.js"></script>
+<script src="js/formataValor.js"></script>
 
 <script>
-  mensagem = "Qual a distância que será percorrida?"
-  var distancia = pegaNumero()
-  mensagem = "Qual a velocidade média do carro?"
-  var velocidadeMedia = pegaNumero()
+  var distancia = pegaNumero("Qual a distância que será percorrida?")
+  var velocidadeMedia = pegaNumero("Qual a velocidade média do carro?")
   var tempoEmHoras = distancia/velocidadeMedia
   var tempoEmMinutos = tempoEmHoras*60
   var totalUber = 2 + distancia*1.4 + tempoEmMinutos*0.26
 
+  var tempoFormatado = formataRelogio(tempoEmMinutos)
+
   document.write(`
-    Total: R$ ${totalUber.toFixed(2).replace(".",",")}
+    Tempo: ${tempoFormatado}
+    <br>
+    Total: R$ ${formataValor(totalUber)}
   `)
 </script>
 <h2>Carro</h2>
 <script>
-  mensagem ="Quantos KM seu carro faz por litro?"
-  var autonomia = pegaNumero()
-  mensagem = "Qual o preço do litro do combustível?"
-  var precoCombustivel = pegaNumero()
+  var autonomia = pegaNumero("Quantos KM seu carro faz por litro?")
+  var precoCombustivel = pegaNumero("Qual o preço do litro do combustível?")
   var combustivel = (distancia/autonomia)*precoCombustivel
-  mensagem = "Digite o quanto gastará com estacionamento"
-  var estacionamento = pegaNumero()
+  var estacionamento = pegaNumero("Digite o quanto gastará com estacionamento")
   var totalCarro = combustivel + estacionamento
 
   document.write(`
-    Combustível: R$ ${combustivel.toFixed(2).replace(".",",")}
+    Combustível: R$ ${formataValor(combustivel)}
     <br>
-    Estacionamento: R$ ${estacionamento.toFixed(2).replace(".",",")}
+    Estacionamento: R$ ${formataValor(estacionamento)}
     <br>
-    Total: R$ ${totalCarro.toFixed(2).replace(".",",")}
+    Total: R$ ${formataValor(totalCarro)}
   `)
 </script>
