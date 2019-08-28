@@ -1,31 +1,75 @@
 <meta charset="utf-8">
 <h1>Academia Caelum</h1>
+<p>Nome:</p>
+<input type="text" id="campoNome">
+<p>Peso:</p>
+<input type="text" id="campoPeso">
+<p>Altura:</p>
+<input type="text" id="campoAltura">
+<p>Data de Nascimento:</p>
+<input type="text" id="campoNascimento">
+<br>
+<br>
+<input type="checkbox" id="campoProblemasCardiacos">Tem problemas cardíacos
+<br>
+<br>
+<button onclick="criarFicha()">Enviar</button>
 
-<script src="js/pegaNumero.js"></script>
+<script src="js/libBrasil.js"></script>
 <script src="js/libIdade.js"></script>
+<script src="js/mostra.js"></script>
 
 <script>
-  var nome = prompt("Qual o nome?")
-  var peso = pegaNumero("Qual o peso?")
-  var altura = pegaNumero("Qual a altura?")
-  var dataNascimento = prompt("Qual a data de nascimento?")
+  var contador = 0
+  function criarFicha() {
+    contador = contador + 1
+    var nome = campoNome.value
+    var peso = parseFloatBrasil(campoPeso.value)
+    var altura = parseFloatBrasil(campoAltura.value)
+    var dataNascimento = campoNascimento.value
 
-  var diaMesAno = dataNascimento.split("/")
-  var diaNascimento = diaMesAno[0]
-  var mesNascimento = diaMesAno[1]
-  var anoNascimento = diaMesAno[2]
+    var diaMesAno = dataNascimento.split("/")
+    var diaNascimento = diaMesAno[0]
+    var mesNascimento = diaMesAno[1]
+    var anoNascimento = diaMesAno[2]
+    var idade = calculaIdade(diaNascimento, mesNascimento, anoNascimento)
 
-  var idade = calculaIdade(diaNascimento, mesNascimento, anoNascimento)
+    var problemasCardiacos = campoProblemasCardiacos.checked
+    var fraseProblemas
+    var ehCrianca = idade < 16
 
-  document.write(`
-    Nome: ${nome}
-    <br>
-    Peso: ${peso.toFixed(2).replace(".",",")} kg
-    <br>
-    Altura: ${altura.toFixed(2).replace(".",",")} m
-    <br>
-    Data de Nascimento: ${dataNascimento}
-    <br>
-    Idade: ${idade} anos
-  `)
+    if (problemasCardiacos || ehCrianca) {
+      fraseProblemas = "Necessita de acompanhamento médico"
+    }
+    if (!problemasCardiacos && !ehCrianca) {
+      fraseProblemas = "NÃO necessita de acompanhamento médico"
+    }
+
+    if (contador == 1) {
+      mostra("<h2>Fichas</h2>")
+    }
+
+    mostra(`
+      <hr>
+      Ficha ${contador}
+      <hr>
+      Nome: ${nome}
+      <br>
+      Peso: ${formataFloatBrasil(peso)} kg
+      <br>
+      Altura: ${formataFloatBrasil(altura)} m
+      <br>
+      Data de Nascimento: ${dataNascimento}
+      <br>
+      Idade: ${idade} anos
+      <br>
+      ${fraseProblemas}
+    `)
+
+    campoNome.value = ""
+    campoPeso.value = ""
+    campoAltura.value = ""
+    campoNascimento.value = ""
+    campoProblemasCardiacos.checked = ""
+  }
 </script>
